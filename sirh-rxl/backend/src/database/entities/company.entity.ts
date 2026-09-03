@@ -8,7 +8,7 @@ import {
   JoinColumn,
   OneToMany,
 } from 'typeorm';
-import { Organization } from '../organizations/organization.entity';
+import { Organization } from './organization.entity';
 
 @Entity('companies')
 export class Company {

@@ -7,9 +7,9 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { User } from '../users/user.entity';
-import { Company } from '../companies/company.entity';
-import { Role } from '../roles/role.entity';
+import { User } from './user.entity';
+import { Company } from './company.entity';
+import { Role } from './role.entity';
 
 @Entity('user_company_access')
 export class UserCompanyAccess {
