@@ -1,11 +1,12 @@
 import { NestFactory } from '@nestjs/core';
 import { ValidationPipe } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
+import { FastifyAdapter, NestFastifyApplication } from '@nestjs/platform-fastify';
 import { AppModule } from './app.module';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
-  
+  const app = await NestFactory.create<NestFastifyApplication>(AppModule, new FastifyAdapter());
+
   const configService = app.get(ConfigService);
   const port = configService.get('PORT') || 3000;
 
@@ -25,11 +26,11 @@ async function bootstrap() {
   });
 
   // Health check endpoint
-  app.get('/health', (req, res) => {
+  app.get('/health', async (req: any, res: any) => {
     res.send({ status: 'ok', timestamp: new Date().toISOString() });
   });
 
-  await app.listen(port);
+  await app.listen(port, '0.0.0.0');
   console.log(`Application is running on: http://localhost:${port}`);
 }
 bootstrap();

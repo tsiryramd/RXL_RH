@@ -2,7 +2,7 @@ import { Injectable, CanActivate, ExecutionContext, UnauthorizedException, Forbi
 import { Reflector } from '@nestjs/core';
 import { JwtService } from '@nestjs/jwt';
 import { Request } from 'express';
-import { UserCompanyAccessService } from '../user-company-access/user-company-access.service';
+import { UserCompanyAccessService } from '../../user-company-access/user-company-access.service';
 
 @Injectable()
 export class CompanyAccessGuard implements CanActivate {
